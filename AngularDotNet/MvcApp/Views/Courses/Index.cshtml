@@ -1,10 +1,16 @@
 ﻿@model string
-@*<div class="container" ng-init="courses = [
-     {number: 'A101', name: 'A class 101', instructor: 'R. Hagrid'},
-     {number: 'B101', name: 'B class 101', instructor: 'S. Snape'},
-     {number: 'C301', name: 'C class 301', instructor: 'M. McGonagall'}
-     ]">*@
-<div class="container" ng-init='courses = @Html.Raw(Model)'>
+
+@section JavascriptInHead
+{
+<script src="~/Scripts/Courses/courses-controller.js"></script>
+<script type="text/javascript">
+    registrationModule.factory("bootstrappedData", function () {
+        return { courses: @Html.Raw(Model) };
+    });
+</script>
+}
+
+<div class="container" ng-controller='CoursesController'>
     <div class="row">
         <div class="span10">
             <table class="table table-condensed table-hover">
