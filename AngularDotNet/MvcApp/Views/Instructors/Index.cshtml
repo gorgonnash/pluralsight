@@ -1,0 +1,35 @@
+﻿@model string
+
+@section JavascriptInHead
+{
+    <script src="~/Scripts/Courses/instructors-controller.js"></script>
+    <script type="text/javascript">
+    registrationModule.factory("bootstrappedInstructors", function () {
+        return { instructors: @Html.Raw(Model) };
+    });
+    </script>
+}
+
+<div class="container" ng-controller='InstructorsController'>
+    <div class="row">
+        <div class="span10">
+            <h2>Instructors</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span10">
+            <table class="table table-condensed table-hover">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Room Number</th>
+                </tr>
+                <tr ng-repeat="i in instructors">
+                    <td>{{i.name}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.roomNumber}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

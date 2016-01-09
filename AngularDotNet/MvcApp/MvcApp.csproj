@@ -186,11 +186,16 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstructorsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Courses\CourseVm.cs" />
+    <Compile Include="Models\Courses\InstructorVm.cs" />
+    <Compile Include="Models\Courses\RegistrationVm.cs" />
+    <Compile Include="Models\Courses\RegistrationVmBuilder.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -209,6 +214,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Courses\courses-controller.js" />
+    <Content Include="Scripts\Courses\instructors-controller.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -259,6 +265,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Hello\Index.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Instructors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
