@@ -3,25 +3,35 @@
         <h2>Create Account</h2>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-3">
-        <div class="form-group">
-            <label>First Name</label>
-            <input type="text" ng-model="student.firstName" class="form-control" />
+<form name="accountForm" novalidate>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" name="firstName" ng-model="student.firstName" class="form-control" required />
+                <div class="text-danger" ng-show="accountForm.firstName.$error.required && accountForm.firstName.$dirty">Missing first name.</div>
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" name="lastName" ng-model="student.lastName" class="form-control" required />
+                <div class="text-danger">Missing last name.</div>
+                <div class="text-danger" ng-show="accountForm.lastName.$error.required && accountForm.lastName.$dirty">Missing last name.</div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" name="email" ng-model="student.email" class="form-control" required ng-pattern="/^[a-zA-Z0-9]+@/" />
+                <div class="text-danger">Missing email.</div>
+                <div class="text-danger" ng-show="accountForm.email.$error.required && accountForm.email.$dirty">Missing email.</div>
+                <div class="text-danger" ng-show="accountForm.email.$error.pattern && accountForm.email.$dirty">Invalid email.</div>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="pwd" ng-model="student.password" class="form-control" required/>
+                <div class="text-danger">Missing password.</div>
+                <div class="text-danger" ng-show="accountForm.pwd.$error.required && accountForm.pwd.$dirty">Missing password.</div>
+            </div>
+            <button class="btn btn-default" ng-disabled="accountForm.$invalid" ng-click="save(student)">Create Account</button>
+            <div style="color:red;" ng-show="error">Cannot save!</div>
         </div>
-        <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" ng-model="student.lastName" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" ng-model="student.email" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" ng-model="student.password" class="form-control" />
-        </div>
-        <button class="btn btn-default" ng-click="save(student)">Create Account</button>
-        <div style="color:red;" ng-show="error">An error occurred.</div>
     </div>
-</div>
+</form>

@@ -409,10 +409,15 @@ namespace MvcApp.Controllers
         [AllowAnonymous]
         public ActionResult Save(StudentVm student)
         {
-            // save student
+            if (ModelState.IsValid) 
+            {
+                // save student
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
 
-            //return new HttpStatusCodeResult(HttpStatusCode.OK);
-            return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+            var errors = ModelState.Values.SelectMany(x => x.Errors.Select(e => e.ErrorMessage));
+
+            return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, string.Join(",", errors));
         }
 
         protected override void Dispose(bool disposing)

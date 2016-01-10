@@ -28,6 +28,12 @@ namespace MvcApp
             );
 
             routes.MapRoute(
+                name: "Registration create account",
+                url: "Registration/CreateAccount",
+                defaults: regDefault
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
