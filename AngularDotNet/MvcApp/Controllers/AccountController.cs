@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MvcApp.Models;
+using MvcApp.Models.Courses;
+using System.Net;
 
 namespace MvcApp.Controllers
 {
@@ -401,6 +403,16 @@ namespace MvcApp.Controllers
         public ActionResult ExternalLoginFailure()
         {
             return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Save(StudentVm student)
+        {
+            // save student
+
+            //return new HttpStatusCodeResult(HttpStatusCode.OK);
+            return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
         }
 
         protected override void Dispose(bool disposing)

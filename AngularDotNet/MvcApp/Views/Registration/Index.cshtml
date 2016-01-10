@@ -6,14 +6,19 @@
 {
     <script src="~/Scripts/Courses/courses-controller.js"></script>
     <script src="~/Scripts/Courses/instructors-controller.js"></script>
-    <script type="text/javascript">
+    <script src="~/Scripts/Courses/course-repository.js"></script>
+    <script src="~/Scripts/Courses/instructor-repository.js"></script>
+    <script src="~/Scripts/Courses/account-controller.js"></script>
+    <script src="~/Scripts/Courses/account-repository.js"></script>
+
+    @*<script type="text/javascript">
         registrationModule.factory("bootstrappedData", function () {
             return {
                 courses: @Html.Raw(Model.Courses),
                 instructors: @Html.Raw(Model.Instructors)
                 };
         });
-    </script>
+    </script>*@
 }
 
 <div class="container">
@@ -28,6 +33,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/Registration/Courses">Browse Catalog</a></li>
                     <li><a href="/Registration/Instructors">Browse Instructors</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Registration/CreateAccount">Create Account</a></li>
                 </ul>
             </div>
         </div>
