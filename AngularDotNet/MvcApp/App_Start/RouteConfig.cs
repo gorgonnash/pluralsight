@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace MvcApp
@@ -12,6 +8,24 @@ namespace MvcApp
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            var regDefault = new
+            {
+                controller = "Registration",
+                action = "Index"
+            };
+
+            routes.MapRoute(
+                name: "Registration Courses",
+                url: "Registration/Courses",
+                defaults: regDefault
+            );
+
+            routes.MapRoute(
+                name: "Registration Instructors",
+                url: "Registration/Instructors",
+                defaults: regDefault
+            );
 
             routes.MapRoute(
                 name: "Default",
