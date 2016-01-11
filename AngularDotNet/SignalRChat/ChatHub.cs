@@ -12,7 +12,6 @@ namespace SignalRChat
         /// $.connection.hub.start();
         /// $.connection.chat.server.hello();
         /// </summary>
-
         public void Hello()
         {
             Clients.All.hello();
@@ -28,6 +27,11 @@ namespace SignalRChat
         public void SaySomething(string message)
         {
             Clients.All.speak(message + " - from the server.");
+        }
+
+        public void SendMessage(string message)
+        {
+            Clients.All.newMessage(message);
         }
     }
 }
