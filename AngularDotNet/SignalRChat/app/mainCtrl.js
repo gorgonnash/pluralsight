@@ -1,4 +1,4 @@
-﻿angular.module('app').controller('mainCtrl', function ($scope, chat) {
+﻿angular.module('app').controller('mainCtrl', function ($scope, chat, toastr) {
     $scope.messages = [];
 
     $scope.inRoom = false;
@@ -10,12 +10,12 @@
 
     $scope.joinRoom = function () {
         $scope.inRoom = true;
-        chat.server.joinRoom($scope.roomName);
+        chat.server.joinRoom($scope.roomName, $scope.name);
     };
 
     $scope.leaveRoom = function () {
         $scope.inRoom = false;
-        chat.server.leaveRoom($scope.roomName);
+        chat.server.leaveRoom($scope.roomName, $scope.name);
     };
 
     $scope.sendMessage = function () {
@@ -27,5 +27,9 @@
         $scope.messages.push({ message: message });
         $scope.$apply();
         console.log(message);
+    };
+
+    chat.client.newNotification = function (notification) {
+        toastr.success(notification);
     };
 });

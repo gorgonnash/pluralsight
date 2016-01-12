@@ -8,17 +8,24 @@ namespace SignalRChat
     {
         public void SendMessage(SendData data)
         {
-            var msg = string.Format("[{0}]: {1}", data.Name, data.Message);
-            Clients.Group(data.RoomName).newMessage(msg);
+            var msg = $"[{data.Name}]: {data.Message}";
+
+            // Send to everyone in group except send (or use Clients.OthersInGroup)
+            Clients.Group(data.RoomName, Context.ConnectionId).newMessage(msg);
+            Clients.Client(Context.ConnectionId).newMessage("You: " + data.Message);
         }
 
-        public void JoinRoom(string roomName) 
+        public void JoinRoom(string roomName, string name)
         {
+            var msg = $"{name} has joined room {roomName}";
+            Clients.OthersInGroup(roomName).newNotification(msg);
             Groups.Add(Context.ConnectionId, roomName);
         }
 
-        public void LeaveRoom(string roomName)
+        public void LeaveRoom(string roomName, string name)
         {
+            var msg = $"{name} has left room {roomName}";
+            Clients.OthersInGroup(roomName).newNotification(msg);
             Groups.Remove(Context.ConnectionId, roomName);
         }
 
