@@ -61,6 +61,7 @@
     <Content Include="app\EditProfileFiles\Original\EditProfileController.js" />
     <Content Include="app\EditProfileFiles\Original\GravatarUrlBuilder.js" />
     <Content Include="app\EventDetails.html" />
+    <Content Include="app\js\controllers\EditEventController.js" />
     <Content Include="app\js\controllers\EventController.js" />
     <Content Include="app\favicon.ico" />
     <Content Include="app\img\angularjs-logo.png" />
@@ -82,6 +83,7 @@
     <Content Include="app\lib\bootstrap.min.js" />
     <Content Include="app\lib\jquery.min.js" />
     <Content Include="app\lib\underscore-1.4.4.min.js" />
+    <Content Include="app\NewEvent.html" />
     <Content Include="scripts\web-server.js" />
   </ItemGroup>
   <ItemGroup>
