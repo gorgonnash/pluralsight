@@ -53,7 +53,7 @@
             <option value="advanced">Advanced</option>
         </select>
         <ul class="thumbnails">
-            <li ng-repeat="session in event.sessions | orderBy:sortorder | filter:query | limitTo:2">
+            <li ng-repeat="session in event.sessions | orderBy:sortorder | filter:query | limitTo:10">
                 <div class="row session">
                     <div class="span0 well votingWidget">
                         <div class="votingButton" ng-click="upVoteSession(session)">
@@ -85,6 +85,8 @@
 <script src="/lib/angular/angular.js"></script>
 <script src="/js/app.js"></script>
 <script src="/js/controllers/EventController.js"></script>
+<script src="/js/services/EventData.js"></script>
 <script src="/js/filters.js"></script>
+    
 </body>
 </html>

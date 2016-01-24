@@ -5,7 +5,7 @@
             "location": {
                 "address": "Google Headquarters",
                 "city": "Mountain View",
-                "province": "CA"
+                "state": "CA"
             },
             "imageUrl": "http://pascalprecht.github.com/slides/angularjs-insights/img/angularjs-logo.png",
             "sessions": [
