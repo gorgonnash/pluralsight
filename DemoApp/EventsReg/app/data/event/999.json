@@ -1,0 +1,12 @@
+{
+  "name": "Awesome Event",
+  "date": "03/06/2017",
+  "time": "Next year",
+  "address": "Somewhere",
+  "location": {
+    "city": "Redmond",
+    "state": "WA"
+  },
+  "imageUrl": "http://1.bp.blogspot.com/-Q2jFHvejuk8/UcCjlqWFqoI/AAAAAAAAj80/EMuPneL5RnI/s1600/003-funny-animal-gifs-baby-elephant.gif",
+  "id": 999
+}

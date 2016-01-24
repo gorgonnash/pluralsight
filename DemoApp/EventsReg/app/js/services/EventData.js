@@ -1,16 +1,23 @@
 ﻿'use strict';
 
-eventsApp.factory('eventData', function ($http, $log) {
-    return {
+eventsApp.factory('eventData', function ($http, $resource) {
 
-        getEvent: function (successcb) {
-            $http({method: 'GET', url: '/data/event/1'})
-            .success(function (data, status, headers, config) {
-                successcb(data);
-            })
-            .error(function (data, status, headers, config) {
-                $log.warn(data, status, headers, config);
-            });
+    var resource = $resource('/data/event/:id', { id: '@id' },
+        { "getAll": { method: "GET", isArray: true, params: { something: "foo" } } });
+
+    return {
+        getEvent: function () {
+            return $http({method: 'GET', url: '/data/event/1'});
+        },
+
+        // GET from RESTful API
+        getEventRes: function () {
+            return resource.get({id:2});
+        },
+
+        saveRes: function (event) {
+            event.id = 999;     // hard code id here
+            return resource.save(event);
         },
 
         event: {

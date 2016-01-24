@@ -47,6 +47,7 @@
     <Folder Include="test\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\CacheSample.html" />
     <Content Include="app\css\app.css" />
     <Content Include="app\css\bootstrap.min.css" />
     <Content Include="app\datepickerDirectiveFiles\app.css" />
@@ -61,6 +62,7 @@
     <Content Include="app\EditProfileFiles\Original\EditProfileController.js" />
     <Content Include="app\EditProfileFiles\Original\GravatarUrlBuilder.js" />
     <Content Include="app\EventDetails.html" />
+    <Content Include="app\js\controllers\CacheSampleController.js" />
     <Content Include="app\js\controllers\EditEventController.js" />
     <Content Include="app\js\controllers\EditProfileController.js" />
     <Content Include="app\js\controllers\EventController.js" />
