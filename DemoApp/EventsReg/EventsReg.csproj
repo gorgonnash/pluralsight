@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\CacheSample.html" />
+    <Content Include="app\CompileSample.html" />
+    <Content Include="app\CookieStoreSample.html" />
     <Content Include="app\css\app.css" />
     <Content Include="app\css\bootstrap.min.css" />
     <Content Include="app\datepickerDirectiveFiles\app.css" />
@@ -62,7 +64,10 @@
     <Content Include="app\EditProfileFiles\Original\EditProfileController.js" />
     <Content Include="app\EditProfileFiles\Original\GravatarUrlBuilder.js" />
     <Content Include="app\EventDetails.html" />
+    <Content Include="app\FilterSample.html" />
     <Content Include="app\js\controllers\CacheSampleController.js" />
+    <Content Include="app\js\controllers\CompileSampleController.js" />
+    <Content Include="app\js\controllers\CookieStoreSampleController.js" />
     <Content Include="app\js\controllers\EditEventController.js" />
     <Content Include="app\js\controllers\EditProfileController.js" />
     <Content Include="app\js\controllers\EventController.js" />
@@ -72,10 +77,16 @@
     <Content Include="app\img\glyphicons-halflings.png" />
     <Content Include="app\img\profile.jpg" />
     <Content Include="app\js\app.js" />
+    <Content Include="app\js\controllers\FilterSampleController.js" />
+    <Content Include="app\js\controllers\LocaleSampleController.js" />
+    <Content Include="app\js\controllers\TimeoutSampleController.js" />
     <Content Include="app\js\directives.js" />
     <Content Include="app\js\filters.js" />
     <Content Include="app\js\services\EventData.js" />
+    <Content Include="app\js\services\ExceptionHandler.js" />
     <Content Include="app\js\services\GravatarUrlBuilder.js" />
+    <Content Include="app\lib\angular\angular-cookies.js" />
+    <Content Include="app\lib\angular\angular-locale_es.js" />
     <Content Include="app\lib\angular\angular-resource.js" />
     <Content Include="app\lib\angular\angular-resource.min.js" />
     <Content Include="app\lib\angular\angular-route.js" />
@@ -88,7 +99,9 @@
     <Content Include="app\lib\bootstrap.min.js" />
     <Content Include="app\lib\jquery.min.js" />
     <Content Include="app\lib\underscore-1.4.4.min.js" />
+    <Content Include="app\LocaleSample.html" />
     <Content Include="app\NewEvent.html" />
+    <Content Include="app\TimeoutSample.html" />
     <Content Include="scripts\web-server.js" />
   </ItemGroup>
   <ItemGroup>
