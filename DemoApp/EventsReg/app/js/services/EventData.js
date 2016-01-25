@@ -20,6 +20,10 @@ eventsApp.factory('eventData', function ($http, $resource) {
             return resource.save(event);
         },
 
+        getAllEvents: function () {
+            return resource.query();
+        },
+
         event: {
             name: 'Angular test',
             date: '1/1/2016',

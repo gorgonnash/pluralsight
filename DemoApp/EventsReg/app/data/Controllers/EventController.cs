@@ -17,18 +17,39 @@ namespace AppData.Controllers
 
         public JToken Get(string id = null)
         {
-            return JObject.Parse(File.ReadAllText(GetTargetPath(id)));
+            if (id == null) 
+            {
+                return GetAllJsonEventsAsArray();
+            }
+
+            return JObject.Parse(File.ReadAllText(GetTargetFilePath(id)));
         } 
         
         public void Post(string id, JObject eventData) 
         {
-            File.WriteAllText(GetTargetPath(id), eventData.ToString(Formatting.Indented));
+            File.WriteAllText(GetTargetFilePath(id), eventData.ToString(Formatting.Indented));
         }
 
-        private static string GetTargetPath(string id) 
+        private static string GetTargetFolderPath() 
+        {
+            return path + "../app/data/event/";
+        }
+
+        private static string GetTargetFilePath(string id) 
         {
             const string fmt = "{0}../app/data/event/{1}.json";
             return string.Format(fmt, path, id);
+        }
+
+        private JArray GetAllJsonEventsAsArray() 
+        {
+            var contents = string.Empty;
+            foreach(var file in Directory.GetFiles(GetTargetFolderPath()))
+            {
+                contents += File.ReadAllText(file) + ",";
+            }
+
+            return JArray.Parse("[" + contents.Substring(0, contents.Length - 1) +"]");
         }
     }
 }

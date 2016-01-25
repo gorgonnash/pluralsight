@@ -65,6 +65,7 @@
     <Content Include="app\EditProfileFiles\Original\GravatarUrlBuilder.js" />
     <Content Include="app\EventDetails.html" />
     <Content Include="app\FilterSample.html" />
+    <Content Include="app\Index.html" />
     <Content Include="app\js\controllers\CacheSampleController.js" />
     <Content Include="app\js\controllers\CompileSampleController.js" />
     <Content Include="app\js\controllers\CookieStoreSampleController.js" />
@@ -77,6 +78,7 @@
     <Content Include="app\img\glyphicons-halflings.png" />
     <Content Include="app\img\profile.jpg" />
     <Content Include="app\js\app.js" />
+    <Content Include="app\js\controllers\EventListController.js" />
     <Content Include="app\js\controllers\FilterSampleController.js" />
     <Content Include="app\js\controllers\LocaleSampleController.js" />
     <Content Include="app\js\controllers\TimeoutSampleController.js" />
@@ -100,7 +102,8 @@
     <Content Include="app\lib\jquery.min.js" />
     <Content Include="app\lib\underscore-1.4.4.min.js" />
     <Content Include="app\LocaleSample.html" />
-    <Content Include="app\NewEvent.html" />
+    <Content Include="app\templates\EventList.html" />
+    <Content Include="app\templates\NewEvent.html" />
     <Content Include="app\TimeoutSample.html" />
     <Content Include="scripts\web-server.js" />
   </ItemGroup>
