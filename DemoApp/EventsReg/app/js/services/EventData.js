@@ -21,6 +21,8 @@ eventsApp.factory('eventData', function ($http, $resource) {
         },
 
         getAllEvents: function () {
+            //return [resource.get({ id: 1 })];
+            //return resource.get({ id: null });
             return resource.query();
         },
 

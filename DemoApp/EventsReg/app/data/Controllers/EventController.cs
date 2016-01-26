@@ -15,13 +15,13 @@ namespace AppData.Controllers
             }
         }
 
-        public JToken Get(string id = null)
+        public JToken GetAll()
         {
-            if (id == null) 
-            {
-                return GetAllJsonEventsAsArray();
-            }
+            return GetAllJsonEventsAsArray();
+        }
 
+        public JToken Get(string id)
+        {
             return JObject.Parse(File.ReadAllText(GetTargetFilePath(id)));
         } 
         
@@ -32,12 +32,12 @@ namespace AppData.Controllers
 
         private static string GetTargetFolderPath() 
         {
-            return path + "../app/data/event/";
+            return path + "../app/data/events/";
         }
 
         private static string GetTargetFilePath(string id) 
         {
-            const string fmt = "{0}../app/data/event/{1}.json";
+            const string fmt = "{0}../app/data/events/{1}.json";
             return string.Format(fmt, path, id);
         }
 
