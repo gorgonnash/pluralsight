@@ -102,6 +102,7 @@
     <Content Include="app\lib\jquery.min.js" />
     <Content Include="app\lib\underscore-1.4.4.min.js" />
     <Content Include="app\LocaleSample.html" />
+    <Content Include="app\templates\EventDetails.html" />
     <Content Include="app\templates\EventList.html" />
     <Content Include="app\templates\NewEvent.html" />
     <Content Include="app\TimeoutSample.html" />
