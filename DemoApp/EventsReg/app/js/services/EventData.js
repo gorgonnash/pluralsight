@@ -7,12 +7,14 @@ eventsApp.factory('eventData', function ($http, $resource) {
 
     return {
         getEvent: function () {
-            return $http({method: 'GET', url: '/data/event/1'});
+            return $http({
+                method: 'GET', url: '/data/event/1'
+            })
         },
 
         // GET from RESTful API
-        getEventRes: function () {
-            return resource.get({id:2});
+        getEventRes: function (eventId) {
+            return resource.get({id: eventId});
         },
 
         saveRes: function (event) {
