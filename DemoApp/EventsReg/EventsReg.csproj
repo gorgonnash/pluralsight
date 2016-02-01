@@ -81,6 +81,7 @@
     <Content Include="app\js\controllers\EventListController.js" />
     <Content Include="app\js\controllers\FilterSampleController.js" />
     <Content Include="app\js\controllers\LocaleSampleController.js" />
+    <Content Include="app\js\controllers\MainMenuController.js" />
     <Content Include="app\js\controllers\TimeoutSampleController.js" />
     <Content Include="app\js\directives.js" />
     <Content Include="app\js\filters.js" />

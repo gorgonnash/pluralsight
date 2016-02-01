@@ -14,6 +14,7 @@ var eventsApp = angular.module('eventsApp', ['ngResource', 'ngCookies', 'ngRoute
         });
         $routeProvider.when('/event/:eventId',
         {
+            // resolve: this route property can delay view loading until a promise is resolved
             foo: 'bar',     // additional route property
             templateUrl: 'templates/EventDetails.html',
             controller: 'EventController'
