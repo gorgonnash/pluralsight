@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace KnightCover
@@ -36,6 +38,7 @@ namespace KnightCover
             Console.WriteLine(board);
             Console.WriteLine("Initial solution: N = {0}, Knights placed: {1}", n, best.Count);
 
+            // find solution given initial (x,y) placement
             for (var i = 0; i < n; i++)
             {
                 for (var j = 0; j < n; j++)
@@ -44,11 +47,37 @@ namespace KnightCover
                     var current = FindSolution(currentBoard, i, j);
                     if (current.Count < best.Count)
                     {
-                        currentBoard.Validate();
+                        if (!currentBoard.IsValidSolution()) 
+                        {
+                            Console.WriteLine(currentBoard);
+                            throw new InvalidOperationException("Invalid solution not allowed!");
+                        }
+
                         best = current;
                         Console.WriteLine(currentBoard);
-                        Console.WriteLine("Current best solution: N = {0}, Knights placed: {1}", n, best.Count);
+                        Console.WriteLine("Solution from greedy placement: N = {0}, Knights placed: {1}", n, best.Count);
                     }
+                }
+            }
+
+            // exhaustive search with fewer knights
+            for (var i = best.Count - 1; i >= 1; i--)
+            {
+                var sol = SolutionExists(n, i);
+                if (sol != null)
+                {
+                    Console.WriteLine(sol);
+                    Console.WriteLine("Solution from exhaustive search: N = {0}, Knights placed: {1}", n, i);
+                    using (var sw = new StreamWriter(@"d:\knights.txt", true))
+                    {
+                        sw.WriteLine(sol);
+                        sw.WriteLine("Solution from exhaustive search: N = {0}, Knights placed: {1}", n, i);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Cannot find better solution");
+                    break;
                 }
             }
         }
@@ -73,10 +102,85 @@ namespace KnightCover
             return result;
         }
 
+        private static Board SolutionExists(int n, int knightCount)
+        {
+            var len = n * n;
+            var bitmap = new byte[len];
+            var patternCount = 0;
+            do
+            {
+                var index = len - 1;
+                bitmap[index]++;
+                while (bitmap[index] > 1)
+                {
+                    bitmap[index] = 0;
+                    index--;
+                    bitmap[index]++;
+                }
+
+                if (bitmap.Count(i => i == 1) == knightCount)
+                {
+                    patternCount++;
+
+                    var selection = new List<int>();
+                    for (var i = 0; i < len; i++)
+                    {
+                        if (bitmap[i] == 1)
+                        {
+                            selection.Add(i);
+                        }
+                    }
+
+                    if (patternCount % 100000 == 0)
+                    {
+                        Console.WriteLine("Evaluating {0}th combination...", patternCount);
+                        Console.WriteLine("Selected sequence:");
+                        foreach (var s in selection)
+                        {
+                            Console.Write("{0} ", s);
+                        }
+
+                        Console.WriteLine();
+                    }
+
+                    var bd = new Board(n);
+                    foreach (var seq in selection)
+                    {
+                        var x = seq / n;
+                        var y = seq % n;
+                        bd.PlaceKnight(x, y);
+                    }
+
+                    if (bd.IsValidSolution()) return bd;
+                }
+
+            } while (!CanStop(bitmap, knightCount));
+
+            return null;
+        }
+
+        private static bool CanStop(byte[] input, int max)
+        {
+            var oneCount = 0;
+            for (var i = 0; i < input.Length; i++)
+            {
+                if (input[i] == 1)
+                {
+                    oneCount++;                    
+                }
+                else 
+                {
+                    break;
+                }
+            }
+
+            return oneCount >= max;
+        }
+
         private class Board
         {
             private const string KnightSymbol = "K";
-            private const string EmptySymbol = "";
+            private const string EmptySymbol = "_";
             private const string AttackedSymbol = "A";
 
             private readonly int size;
@@ -92,7 +196,7 @@ namespace KnightCover
                 {
                     for (var j = 0; j < size; j++)
                     {
-                        cells[i, j] = string.Empty;
+                        cells[i, j] = EmptySymbol;
                     }
                 }
             }
@@ -159,21 +263,23 @@ namespace KnightCover
                 return null;
             }
 
-            public void Validate()
+            public bool IsValidSolution()
             {
                 for (var i = 0; i < size; i++)
                 {
                     for (var j = 0; j < size; j++)
                     {
-                        if (cells[i, j] == EmptySymbol) throw new InvalidOperationException("Empty cell not allowed!");
+                        if (cells[i, j] == EmptySymbol) return false;
 
                         if (cells[i, j] == KnightSymbol) continue;
 
                         if (cells[i, j] == AttackedSymbol && IsCellUnderAttack(i, j)) continue;
 
-                        throw new InvalidOperationException("Invalid cell state!");
+                        return false;
                     }
                 }
+
+                return true;
             }
 
             private bool IsCellUnderAttack(int x, int y)
