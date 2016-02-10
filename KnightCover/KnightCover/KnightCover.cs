@@ -106,7 +106,7 @@ namespace KnightCover
         {
             var len = n * n;
             var bitmap = new byte[len];
-            var patternCount = 0;
+            var patternCount = 0L;
             do
             {
                 var index = len - 1;
@@ -131,7 +131,7 @@ namespace KnightCover
                         }
                     }
 
-                    if (patternCount % 100000 == 0)
+                    if (patternCount % 1000000 == 0)
                     {
                         Console.WriteLine("Evaluating {0}th combination...", patternCount);
                         Console.WriteLine("Selected sequence:");
