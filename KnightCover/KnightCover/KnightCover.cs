@@ -61,25 +61,7 @@ namespace KnightCover
             }
 
             // exhaustive search with fewer knights
-            for (var i = best.Count - 1; i >= 1; i--)
-            {
-                var sol = SolutionExists(n, i);
-                if (sol != null)
-                {
-                    Console.WriteLine(sol);
-                    Console.WriteLine("Solution from exhaustive search: N = {0}, Knights placed: {1}", n, i);
-                    using (var sw = new StreamWriter(@"d:\knights.txt", true))
-                    {
-                        sw.WriteLine(sol);
-                        sw.WriteLine("Solution from exhaustive search: N = {0}, Knights placed: {1}", n, i);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Cannot find better solution");
-                    break;
-                }
-            }
+            ExhaustiveSearch(n, best.Count - 1);
         }
 
         private static Stack<Tuple<int, int>> FindSolution(Board bd, int initX, int initY)
@@ -100,6 +82,29 @@ namespace KnightCover
             }
 
             return result;
+        }
+
+        private static void ExhaustiveSearch(int n, int knightCount)
+        {
+            for (var i = knightCount - 1; i >= 1; i--)
+            {
+                var sol = SolutionExists(n, i);
+                if (sol != null)
+                {
+                    Console.WriteLine(sol);
+                    Console.WriteLine("Solution from exhaustive search: N = {0}, Knights placed: {1}", n, i);
+                    using (var sw = new StreamWriter(@"c:\knights.txt", true))
+                    {
+                        sw.WriteLine(sol);
+                        sw.WriteLine("Solution from exhaustive search: N = {0}, Knights placed: {1}", n, i);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Exhaustive search cannot find a better solution. Terminating.");
+                    break;
+                }
+            }
         }
 
         private static Board SolutionExists(int n, int knightCount)
