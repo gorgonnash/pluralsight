@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace KnightCover
@@ -10,7 +9,7 @@ namespace KnightCover
     class KnightCover
     {
         static void Main(string[] args)
-        {            
+        {
             if (args.Length == 0)
             {
                 Console.WriteLine("Usage: KnightCover.exe <BoardSize>");
@@ -109,77 +108,54 @@ namespace KnightCover
 
         private static Board SolutionExists(int n, int knightCount)
         {
-            var len = n * n;
-            var bitmap = new byte[len];
+            var squareCount = n * n;
+            var arr = new int[knightCount];
+            for (var i = 0; i < knightCount; i++) arr[i] = i;
+
+            var loopCount = 0L;
             var patternCount = 0L;
-            do
+            while (arr[knightCount - 1] < squareCount)
             {
-                var index = len - 1;
-                bitmap[index]++;
-                while (bitmap[index] > 1)
+                if (patternCount == Int64.MaxValue)
                 {
-                    bitmap[index] = 0;
-                    index--;
-                    bitmap[index]++;
+                    patternCount = 0;
+                    loopCount++;
                 }
 
-                if (bitmap.Count(i => i == 1) == knightCount)
+                patternCount++;
+                if (patternCount % 1000000 == 0)
                 {
-                    patternCount++;
-
-                    var selection = new List<int>();
-                    for (var i = 0; i < len; i++)
+                    Console.WriteLine("{0:MM/dd HH:mm:ss} Loop {1}: evaluating {2}th combination...", DateTime.Now, loopCount, patternCount);
+                    Console.WriteLine("Selected sequence:");
+                    foreach (var s in arr)
                     {
-                        if (bitmap[i] == 1)
-                        {
-                            selection.Add(i);
-                        }
+                        Console.Write("{0} ", s);
                     }
 
-                    if (patternCount % 1000000 == 0)
-                    {
-                        Console.WriteLine("Evaluating {0}th combination...", patternCount);
-                        Console.WriteLine("Selected sequence:");
-                        foreach (var s in selection)
-                        {
-                            Console.Write("{0} ", s);
-                        }
-
-                        Console.WriteLine();
-                    }
-
-                    var bd = new Board(n);
-                    foreach (var seq in selection)
-                    {
-                        var x = seq / n;
-                        var y = seq % n;
-                        bd.PlaceKnight(x, y);
-                    }
-
-                    if (bd.IsValidSolution()) return bd;
+                    Console.WriteLine();
                 }
 
-            } while (!CanStop(bitmap, knightCount));
-
-            return null;
-        }
-
-        private static bool CanStop(byte[] input, int max)
-        {
-            var oneCount = 0;
-            for (var i = 0; i < input.Length; i++)
-            {
-                if (input[i] == 1)
+                var bd = new Board(n);
+                foreach (var seq in arr)
                 {
-                    oneCount++;                    
+                    var x = seq / n;
+                    var y = seq % n;
+                    bd.PlaceKnight(x, y);
                 }
-                else 
+
+                if (bd.IsValidSolution()) return bd;
+
+                var t = knightCount - 1;
+                while (t != 0 && arr[t] == squareCount - knightCount + t) t--;
+                
+                arr[t]++;
+                for (var i = t + 1; i < knightCount; i++)
                 {
-                    break;
+                    arr[i] = arr[i - 1] + 1;
                 }
             }
 
-            return oneCount >= max;
+            return null;
         }
 
         private class Board
