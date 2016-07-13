@@ -221,4 +221,4 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-**/applicationhost.config
+**/.vs/config/applicationhost.config
