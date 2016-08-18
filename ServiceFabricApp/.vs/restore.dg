@@ -1,0 +1,7 @@
+#:E:\GitHub\repo\pluralsight\ServiceFabricApp\MyWebService\MyWebService.xproj
+E:\GitHub\repo\pluralsight\ServiceFabricApp\MyWebService\MyWebService.xproj|E:\GitHub\repo\pluralsight\ServiceFabricApp\MyStatefulService.Interfaces\MyStatefulService.Interfaces.csproj
+#:E:\GitHub\repo\pluralsight\ServiceFabricApp\ServiceFabricApp\ServiceFabricApp.sfproj
+E:\GitHub\repo\pluralsight\ServiceFabricApp\ServiceFabricApp\ServiceFabricApp.sfproj|E:\GitHub\repo\pluralsight\ServiceFabricApp\MyStatefulService\MyStatefulService.csproj
+E:\GitHub\repo\pluralsight\ServiceFabricApp\ServiceFabricApp\ServiceFabricApp.sfproj|E:\GitHub\repo\pluralsight\ServiceFabricApp\MyWebService\MyWebService.xproj
+E:\GitHub\repo\pluralsight\ServiceFabricApp\MyStatefulService\MyStatefulService.csproj|E:\GitHub\repo\pluralsight\ServiceFabricApp\MyStatefulService.Interfaces\MyStatefulService.Interfaces.csproj
+E:\GitHub\repo\pluralsight\ServiceFabricApp\MyWebService\MyWebService.xproj|E:\GitHub\repo\pluralsight\ServiceFabricApp\MyStatefulService.Interfaces\MyStatefulService.Interfaces.csproj
