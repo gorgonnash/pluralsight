@@ -5,7 +5,7 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.5.2",
       "compile": {
-        "bin/x64/Debug/MyStatefulService.Interfaces.dll": {}
+        "bin/Debug/MyStatefulService.Interfaces.dll": {}
       },
       "runtime": {
         "../packages/Microsoft.ServiceFabric.5.1.163/lib/net45/Microsoft.ServiceFabric.Internal.Strings.dll": {},
@@ -15,10 +15,10 @@
         "../packages/Microsoft.ServiceFabric.Data.2.1.163/lib/net45/Microsoft.ServiceFabric.Data.dll": {},
         "../packages/Microsoft.ServiceFabric.Services.2.1.163/lib/net45/Microsoft.ServiceFabric.Services.dll": {},
         "../packages/Microsoft.ServiceFabric.Services.2.1.163/lib/net45/ServiceFabricServiceModel.dll": {},
-        "bin/x64/Debug/MyStatefulService.Interfaces.dll": {}
+        "bin/Debug/MyStatefulService.Interfaces.dll": {}
       },
       "contentFiles": {
-        "bin/x64/Debug/MyStatefulService.Interfaces.pdb": {
+        "bin/Debug/MyStatefulService.Interfaces.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true
